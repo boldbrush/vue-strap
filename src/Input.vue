@@ -17,9 +17,10 @@
         :rows="rows"
         :step="step"
         :title="attr(title)"
+        :autofocus="autofocus"
         :type="type=='textarea'?null:type"
-        v-model="val"
-        @blur="emit" @focus="emit" @input="emit"
+        :value="val" @input="emit"
+        @blur="emit" @focus="emit" 
         @keyup.enter="type!='textarea'&&enterSubmit&&submit()"
       ></textarea>
       <div v-if="clearButton && value" :class="{icon:icon}">
@@ -45,8 +46,9 @@
         :rows="rows"
         :step="step"
         :title="attr(title)"
+        :autofocus="autofocus"
         :type="type=='textarea'?null:type"
-        v-model="val"
+        :value="val" @input="emit"
         @blur="emit" @focus="emit" @input="emit"
         @keyup.enter="type!='textarea'&&enterSubmit&&submit()"
       ></textarea>
@@ -73,6 +75,7 @@ export default {
     cols: {type: Number, default: null},
     datalist: {type: Array, default: null},
     disabled: {type: Boolean, default: false},
+    autofocus: {type: Boolean, default: false},
     enterSubmit: {type: Boolean, default: false},
     error: {type: String, default: null},
     help: {type: String, default: null},
@@ -190,7 +193,9 @@ export default {
         }, this.validationDelay)
       }
     },
-    focus () { this.input.focus() },
+    focus () { 
+      setTimeout(()=>this.$refs.input && this.refs.input(), 100)
+    },
     submit () {
       if (this.$parent._formValidator) {
         return this.$parent.validate()

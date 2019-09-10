@@ -28,6 +28,9 @@ export default {
       this.$nextTick(() => {
         var popover = this.$refs.popover
         var trigger = this.$refs.trigger.children[0]
+
+        if (!popover || !trigger) return;
+
         switch (this.placement) {
           case 'top' :
             this.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
