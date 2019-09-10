@@ -194,7 +194,7 @@ export default {
       }
     },
     focus () { 
-      setTimeout(()=>this.$refs.input && this.$refs.input(), 100)
+      setTimeout(()=>this.$refs.input && this.$refs.input.focus(), 100)
     },
     submit () {
       if (this.$parent._formValidator) {
