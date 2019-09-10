@@ -49,7 +49,7 @@
         :autofocus="autofocus"
         :type="type=='textarea'?null:type"
         :value="val" @input="emit"
-        @blur="emit" @focus="emit" @input="emit"
+        @blur="emit" @focus="emit"
         @keyup.enter="type!='textarea'&&enterSubmit&&submit()"
       ></textarea>
       <span v-if="clearButton && val" class="close" @click="val = ''">&times;</span>
