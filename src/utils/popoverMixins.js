@@ -1,5 +1,10 @@
 import $ from './NodeList.js'
-
+function windowPos(element) {
+  // const win = typeof window === 'undefined' ? {scrollY:0, scrollX:0} : window;
+  var top = element.getBoundingClientRect().top //+ (win.scrollY || win.pageYOffset);
+  var left = element.getBoundingClientRect().left //+ (win.scrollX || win.pageXOffset);
+  return {top, left}
+}
 export default {
   props: {
     content: {type: String},
@@ -30,23 +35,25 @@ export default {
         var trigger = this.$refs.trigger.children[0]
 
         if (!popover || !trigger) return;
+        if (popover.style.position!=='fixed') popover.style.position = 'fixed'
+        const p = windowPos(trigger)
 
         switch (this.placement) {
           case 'top' :
-            this.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
-            this.top = trigger.offsetTop - popover.offsetHeight
+            this.left = p.left - popover.offsetWidth / 2 + trigger.offsetWidth / 2
+            this.top = p.top - popover.offsetHeight
             break
           case 'left':
-            this.left = trigger.offsetLeft - popover.offsetWidth
-            this.top = trigger.offsetTop + trigger.offsetHeight / 2 - popover.offsetHeight / 2
+            this.left = p.left - popover.offsetWidth
+            this.top = p.top + trigger.offsetHeight / 2 - popover.offsetHeight / 2
             break
           case 'right':
-            this.left = trigger.offsetLeft + trigger.offsetWidth
-            this.top = trigger.offsetTop + trigger.offsetHeight / 2 - popover.offsetHeight / 2
+            this.left = p.left + trigger.offsetWidth
+            this.top = p.top + trigger.offsetHeight / 2 - popover.offsetHeight / 2
             break
           case 'bottom':
-            this.left = trigger.offsetLeft - popover.offsetWidth / 2 + trigger.offsetWidth / 2
-            this.top = trigger.offsetTop + trigger.offsetHeight
+            this.left = p.left - popover.offsetWidth / 2 + trigger.offsetWidth / 2
+            this.top = p.top + trigger.offsetHeight
             break
           default:
             console.warn('Wrong placement prop')
