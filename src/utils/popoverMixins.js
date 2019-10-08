@@ -35,7 +35,8 @@ export default {
         var trigger = this.$refs.trigger.children[0]
 
         if (!popover || !trigger) return;
-        if (popover.style.position!=='fixed') popover.style.position = 'fixed'
+        if (popover.style.position!=='fixed') { popover.style.position = 'fixed'; document.body.appendChild(popover) }
+
         const p = windowPos(trigger)
 
         switch (this.placement) {
