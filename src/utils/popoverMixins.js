@@ -82,6 +82,9 @@ export default {
     })
   },
   beforeDestroy () {
+    var popover = this.$refs.popover
+    if (popover) popover.remove();
+
     if (this._trigger) $(this._trigger).off()
   }
 }
