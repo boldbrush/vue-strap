@@ -31,11 +31,23 @@ export default {
 .tooltip.bottom {
   opacity: .9;
 }
+.tooltip {
+  animation:fadein-in .4s ease-in;
+}
+.tooltip-inner {
+  background-color: #000;
+  color: #fff;
+  max-width: 200px;
+  padding: 15px 18px 14px;
+  text-align: center;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+}
 .fadein-enter {
-  animation:fadein-in 0.3s ease-in;
+  animation:fadein-in 0.4s ease-in;
 }
 .fadein-leave-active {
-  animation:fadein-out 0.3s ease-out;
+  animation:fadein-out 0.4s ease-out;
 }
 @keyframes fadein-in {
   0% {
