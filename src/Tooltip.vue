@@ -18,7 +18,7 @@ import PopoverMixin from './utils/popoverMixins.js'
 export default {
   mixins: [PopoverMixin],
   props: {
-    effect: {type: String, default: 'scale'},
+    effect: {type: String, default: 'fadein'},
     trigger: {type: String, default: 'hover'}
   }
 }
@@ -47,7 +47,7 @@ export default {
   animation:fadein-in 0.4s ease-in;
 }
 .fadein-leave-active {
-  animation:fadein-out 0.6s ease-out;
+  animation:fadein-out 0.4s ease-out;
 }
 @keyframes fadein-in {
   0% {
