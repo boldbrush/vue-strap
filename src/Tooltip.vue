@@ -47,7 +47,7 @@ export default {
   animation:fadein-in 0.4s ease-in;
 }
 .fadein-leave-active {
-  animation:fadein-out 0.4s ease-out;
+  animation:fadein-out 0.6s ease-out;
 }
 @keyframes fadein-in {
   0% {
